@@ -35,6 +35,7 @@ int main() {
             cout << "KLAIDA: Nera tokio pasirinkimo!" << endl;
             continue;
         }
+        //1 PUNKTAS
         if (meniuPasirinkimas == 1) {
             if (esamasMokiniuSkaicius >= MAX_MOKINIAI) {
                 cout << "KLAIDA: Pasiektas maksimalus mokiniu limitas (100)!" << endl;
@@ -70,8 +71,27 @@ int main() {
             cout << "Mokinys sekmingai pridetas!" << endl;
             esamasMokiniuSkaicius++;
         }
+
+        //2 PUNKTAS
+        else if (meniuPasirinkimas == 2) {
+            if (esamasMokiniuSkaicius == 0) {
+                cout << "Sarase nera mokiniu." << endl;
+                continue;
+            }
+            cout << "\n--- VISU MOKINIU PAZYMIAI ---" << endl;
+            for (int i = 0; i < esamasMokiniuSkaicius; i++) {
+                cout << i + 1 << ". " << mokinioVardas[i] << ": ";
+                if (pazymiuKiekis[i] == 0) {
+                    cout << "Pazymiu nera";
+                }
+                else  {
+                    for (int j = 0; j < pazymiuKiekis[i]; j++) {
+                        cout << mokinioPazymiai[i][j] << "; ";
+                    }
+                }
+                cout << endl;
+            }
+        }
     }
-
-
         return 0;
     }
