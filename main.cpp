@@ -35,7 +35,7 @@ int main() {
             cout << "KLAIDA: Nera tokio pasirinkimo!" << endl;
             continue;
         }
-        //1 PUNKTAS
+        //1 PUNKTAS: Ivesti mokini ir jo pazymius
         if (meniuPasirinkimas == 1) {
             if (esamasMokiniuSkaicius >= MAX_MOKINIAI) {
                 cout << "KLAIDA: Pasiektas maksimalus mokiniu limitas (100)!" << endl;
@@ -72,7 +72,7 @@ int main() {
             esamasMokiniuSkaicius++;
         }
 
-        //2 PUNKTAS
+        //2 PUNKTAS: Perziureti visu mokiniu pazymius
         else if (meniuPasirinkimas == 2) {
             if (esamasMokiniuSkaicius == 0) {
                 cout << "Sarase nera mokiniu." << endl;
@@ -91,6 +91,34 @@ int main() {
                 }
                 cout << endl;
             }
+        }
+        // 3 PUNKTAS: Perziureti konkretaus mokinio pazymius
+        else if (meniuPasirinkimas == 3) {
+            if (esamasMokiniuSkaicius == 0) {
+                cout << "Sarase nera mokiniu." << endl;
+                continue;
+            }
+            int mokinioNr;
+            while (true) {
+                cout << "Iveskite mokinio numeri (1-" << esamasMokiniuSkaicius << "): ";
+                cin >> mokinioNr;
+                if (mokinioNr >= 1 && mokinioNr <= esamasMokiniuSkaicius) {
+                    break;
+                }
+                cout << "KLAIDA: Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << esamasMokiniuSkaicius << "." << endl;
+            }
+            int indeksas = mokinioNr - 1;
+            cout << "\nMokinys: " << mokinioVardas[indeksas] << endl;
+            cout << "Pazymiai: ";
+            if (pazymiuKiekis[indeksas] == 0) {
+                cout << "Pazymiu nera";
+            }
+            else {
+                for (int j = 0; j < pazymiuKiekis[indeksas]; j++) {
+                    cout << mokinioPazymiai[indeksas][j] << " ";
+                }
+            }
+            cout << endl;
         }
     }
         return 0;
