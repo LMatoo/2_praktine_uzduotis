@@ -163,7 +163,34 @@ int main() {
                     cout << "KLAIDA: Pazymys turi buti nuo 1-10" << endl;
                 }
             }
-
+        }
+        //5 PUNKTAS: Apskaiciuoti mokinio vidurki
+        else if (meniuPasirinkimas == 5) {
+            if (esamasMokiniuSkaicius == 0) {
+                cout << "Sarase nera mokiniu." << endl;
+                continue;
+            }
+            int mokinioNr;
+            while (true) {
+                cout << "Iveskite mokinio numeri (1-" << esamasMokiniuSkaicius << "): ";
+                cin >> mokinioNr;
+                if (mokinioNr >= 1 && mokinioNr <= esamasMokiniuSkaicius) {
+                    break;
+                }
+                cout << "KLAIDA: Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << esamasMokiniuSkaicius << "." << endl;
+            }
+            int mIndx = mokinioNr - 1;
+            if (pazymiuKiekis[mIndx] == 0) {
+                cout << mokinioVardas[mIndx] << " neturi pazymiu, todel vidurkio apskaiciuoti negalima." << endl;
+            }
+            else {
+                double suma = 0;
+                for (int j = 0; j < pazymiuKiekis[mIndx]; j++) {
+                    suma += mokinioPazymiai[mIndx][j];
+                }
+                cout << fixed << setprecision(2);
+                cout << "Mokinio " << mokinioVardas[mIndx] << " pazymiu vidurkis: " << (suma / pazymiuKiekis[mIndx]) << endl;
+            }
         }
     }
         return 0;
