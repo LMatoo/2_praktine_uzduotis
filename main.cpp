@@ -120,7 +120,7 @@ int main() {
             }
             cout << endl;
         }
-    //4 PUNKTAS: Atnaujinti pazymi
+        //4 PUNKTAS: Atnaujinti pazymi
         else if (meniuPasirinkimas == 4) {
             if (esamasMokiniuSkaicius == 0) {
                 cout << "Sarase nera mokiniu." << endl;
@@ -134,7 +134,7 @@ int main() {
                     break;
                 }
                 cout << "KLAIDA: Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << esamasMokiniuSkaicius << "." << endl;
-                }
+            }
             int mIndx = mokinioNr - 1;
             if (pazymiuKiekis[mIndx] == 0) {
                 cout << "Sis mokinys neturi pazymiu, kuriuos butu galima atnaujinti." << endl;
@@ -191,6 +191,33 @@ int main() {
                 cout << fixed << setprecision(2);
                 cout << "Mokinio " << mokinioVardas[mIndx] << " pazymiu vidurkis: " << (suma / pazymiuKiekis[mIndx]) << endl;
             }
+        }
+        //6 PUNKTAS: Pasalinti mokini
+        else if (meniuPasirinkimas == 6) {
+            if (esamasMokiniuSkaicius == 0) {
+                cout << "Sarase nera mokiniu." << endl;
+                continue;
+            }
+            int mokinioNr;
+            while (true) {
+                cout << "Iveskite mokinio numeri, kuri norite pasalinti (1-" << esamasMokiniuSkaicius << "): ";
+                cin >> mokinioNr;
+                if (mokinioNr >= 1 && mokinioNr <= esamasMokiniuSkaicius) {
+                    break;
+                }
+                cout << "KLAIDA: Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << esamasMokiniuSkaicius << "." << endl;
+            }
+            int salinamasIndx = mokinioNr - 1;
+            cout << "Mokinys " << mokinioVardas[salinamasIndx] << " pasalinamas is saraso." << endl;
+            for (int i = salinamasIndx; i < esamasMokiniuSkaicius - 1; i++) {
+                mokinioVardas[i] = mokinioVardas[i + 1];
+                pazymiuKiekis[i] = pazymiuKiekis[i + 1];
+                for (int j = 0; j < MAX_PAZYMIAI; j++) {
+                    mokinioPazymiai[i][j] = mokinioPazymiai[i + 1][j];
+                }
+            }
+            esamasMokiniuSkaicius--;
+            cout << "Sarasas sekmingai sutvarkytas!" << endl;
         }
     }
         return 0;
