@@ -120,6 +120,51 @@ int main() {
             }
             cout << endl;
         }
+    //4 PUNKTAS: Atnaujinti pazymi
+        else if (meniuPasirinkimas == 4) {
+            if (esamasMokiniuSkaicius == 0) {
+                cout << "Sarase nera mokiniu." << endl;
+                continue;
+            }
+            int mokinioNr;
+            while (true) {
+                cout << "Iveskite mokinio numeri (1-" << esamasMokiniuSkaicius << "): ";
+                cin >> mokinioNr;
+                if (mokinioNr >= 1 && mokinioNr <= esamasMokiniuSkaicius) {
+                    break;
+                }
+                cout << "KLAIDA: Neteisingas mokinio numeris. Iveskite skaiciu nuo 1 iki " << esamasMokiniuSkaicius << "." << endl;
+                }
+            int mIndx = mokinioNr - 1;
+            if (pazymiuKiekis[mIndx] == 0) {
+                cout << "Sis mokinys neturi pazymiu, kuriuos butu galima atnaujinti." << endl;
+                continue;
+            }
+            int pazymioNr;
+            while (true) {
+                cout << "Mokinys turi "  << pazymiuKiekis[mIndx] << " pazymius. Kuri pazymi (1-" << pazymiuKiekis[mIndx] << ") atnaujinti? ";
+                cin >> pazymioNr;
+                if (pazymioNr >= 1 && pazymioNr <= pazymiuKiekis[mIndx]) {
+                    break;
+                }
+                cout << "KLAIDA: Neteisingas pazymio numeris. Iveskite skaiciu nuo 1 iki " << pazymiuKiekis[mIndx] << "." << endl;
+            }
+            int pIndx = pazymioNr - 1;
+            while (true) {
+                cout << "Iveskite nauja pazymio reiksme (1-10): ";
+                int naujasPazymys;
+                cin >> naujasPazymys;
+                if (naujasPazymys >= 1 && naujasPazymys <= 10) {
+                    mokinioPazymiai[mIndx][pIndx] = naujasPazymys;
+                    cout << "Pazymys sekmingai atnaujintas!" << endl;
+                    break;
+                }
+                else {
+                    cout << "KLAIDA: Pazymys turi buti nuo 1-10" << endl;
+                }
+            }
+
+        }
     }
         return 0;
     }
